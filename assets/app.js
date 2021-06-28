@@ -7,6 +7,7 @@ import {
     Link
 } from "react-router-dom";
 
+import UserContextProvider from './components/UserContextProvider';
 import About from "./components/About"
 import Home from "./components/Home"
 import Users from "./components/Users"
@@ -15,7 +16,7 @@ class App extends Component {
     render() {
         return (
             <Router>
-                <div>
+                <UserContextProvider>
                     <nav>
                         <ul>
                             <li>
@@ -41,7 +42,7 @@ class App extends Component {
                             <Home />
                         </Route>
                     </Switch>
-                </div>
+                </UserContextProvider>
             </Router>
         )
     }

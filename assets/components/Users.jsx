@@ -1,32 +1,38 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from "react";
+import UserContext from "../context/UserContext";
 
-export default Users => {
-    const [users, setUsers] = useState([])
-    const [loading, setLoading] = useState(true)
+export default (Users) => {
+  const [users, setUsers] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const { userId, setUserId } = useContext(UserContext);
 
-    useEffect(() => {
-        const fetchUsers = async () => {
-            const response = await fetch('/api/user')
-            const jsonData = await response.json()
+  const fetchUsers = async () => {
+    const response = await fetch("/api/user");
+    const jsonData = await response.json();
+    setUsers(jsonData);
+    setLoading(false);
+  };
+  useEffect(() => {
+    fetchUsers();
+  }, []);
 
-            setUsers(jsonData)
-            setLoading(false)
-        }
+  if (loading) {
+    return <p>Chargement des utilisateurs ...</p>;
+  }
 
-        fetchUsers();
-    })
+  return (
+    <>
+      <h1>Users</h1>
 
-    if (loading) {
-        return <p>Chargement des utilisateurs ...</p>
-    }
+      <p>hello ! </p>
 
-    return (
-        <>
-            <h1>Users</h1>
-
-            {users.map(user => (
-                <p>{ user.firstname } { user.lastname }, { user.age }</p>
-            ))}
-        </>
-    )
-}
+      <ul>
+        {users.map((user) => (
+          <li>
+            {user.firstname} {user.lastname}, {user.age}
+          </li>
+        ))}
+      </ul>
+    </>
+  );
+};
