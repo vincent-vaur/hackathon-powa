@@ -3,16 +3,34 @@
 namespace App\Controller;
 
 use App\Repository\UserRepository;
+use App\Services\UserData;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-#[Route('/api', name: 'api_')]
+/**
+ * @Route("/api", name="api_")
+ */
 class ApiController extends AbstractController
 {
-    #[Route('/user', name: 'user')]
-    public function index(UserRepository $userRepository): Response
+    /**
+     * @Route("/user", name="user")
+     */
+    // Envoi des données entrées par utilisateur
+    //  et traitement pour renvoyer sur l'appli
+    // public function user(UserRepository $userRepository): Response
+    // {
+    //     return $this->json($userRepository->findAll());
+    // }
+    /**
+     * @Route("/category", name="category")
+     */
+    public function category(UserData $userData): Response
     {
-        return $this->json($userRepository->findAll());
+        //Retourner les catégories principales et sous-catégories
+        return $this->json([
+            $userData->mainCategories, 
+            $userData->subCategories
+        ]);
     }
 }

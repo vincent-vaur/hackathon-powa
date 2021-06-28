@@ -47,4 +47,21 @@ class UserRepository extends ServiceEntityRepository
         ;
     }
     */
+    public function findThanksToSurvey(array $array): ?User
+    {
+        return $this
+            ->getEntityManager()
+            ->createQuery('
+                    SELECT u FROM App\Entity\User u
+                    WHERE u.main_category LIKE :main_category
+                    WHERE u.sub_category LIKE :sub_category
+                    WHERE u.language LIKE :language
+                    WHERE u.hourly_rate LIKE :hourly_rate
+            ')
+            ->setParameter('main_category', $array['main_category'])
+            ->setParameter('sub_category', $array['sub_category'])
+            ->setParameter('language', $array['language'])
+            ->setParameter('hourly_rate', $array['hourly_rate'])
+            ->getResult();
+    }
 }
