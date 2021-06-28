@@ -6,7 +6,7 @@ export default Users => {
 
     useEffect(() => {
         const fetchUsers = async () => {
-            const response = await fetch('/api/user')
+            const response = await fetch('api/user')
             const jsonData = await response.json()
 
             setUsers(jsonData)
@@ -14,7 +14,7 @@ export default Users => {
         }
 
         fetchUsers();
-    })
+    },[])
 
     if (loading) {
         return <p>Chargement des utilisateurs ...</p>
@@ -23,7 +23,6 @@ export default Users => {
     return (
         <>
             <h1>Users</h1>
-
             {users.map(user => (
                 <p>{ user.firstname } { user.lastname }, { user.age }</p>
             ))}
