@@ -20,55 +20,58 @@ class User
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $firstname;
+    private $firstName;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $lastname;
+    private $lastName;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $subCategory;
 
     /**
      * @ORM\Column(type="integer")
      */
-    private $age;
+    private $hourlyRate;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $language;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $mainCategory;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getFirstname(): ?string
+    public function getFirstName(): ?string
     {
-        return $this->firstname;
+        return $this->firstName;
     }
 
-    public function setFirstname(string $firstname): self
+    public function setFirstName(string $firstName): self
     {
-        $this->firstname = $firstname;
+        $this->firstName = $firstName;
 
         return $this;
     }
 
-    public function getLastname(): ?string
+    public function getLastName(): ?string
     {
-        return $this->lastname;
+        return $this->lastName;
     }
 
-    public function setLastname(string $lastname): self
+    public function setLastName(string $lastName): self
     {
-        $this->lastname = $lastname;
-
-        return $this;
-    }
-
-    public function getAge(): ?int
-    {
-        return $this->age;
-    }
-
-    public function setAge(int $age): self
-    {
-        $this->age = $age;
+        $this->lastName = $lastName;
 
         return $this;
     }
@@ -76,5 +79,53 @@ class User
     public function __toString()
     {
         return $this->getFirstname() . ' ' . $this->getLastname();
+    }
+
+    public function getSubCategory(): ?string
+    {
+        return $this->subCategory;
+    }
+
+    public function setSubCategory(string $subCategory): self
+    {
+        $this->subCategory = $subCategory;
+
+        return $this;
+    }
+
+    public function getHourlyRate(): ?int
+    {
+        return $this->hourlyRate;
+    }
+
+    public function setHourlyRate(int $hourlyRate): self
+    {
+        $this->hourlyRate = $hourlyRate;
+
+        return $this;
+    }
+
+    public function getLanguage(): ?string
+    {
+        return $this->language;
+    }
+
+    public function setLanguage(string $language): self
+    {
+        $this->language = $language;
+
+        return $this;
+    }
+
+    public function getMainCategory(): ?string
+    {
+        return $this->mainCategory;
+    }
+
+    public function setMainCategory(string $mainCategory): self
+    {
+        $this->mainCategory = $mainCategory;
+
+        return $this;
     }
 }
