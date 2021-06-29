@@ -5,14 +5,6 @@ import { postLogin } from "../api/api";
 
 const GlobalContext = ({ children }) => {
   const [user, setUser] = useState();
-
-  useEffect(() => {
-    postPostIt().then((res) => setusers(res));
-  }, []);
-
-  useEffect(() => {
-    postLogin().then((res) => setmovies(res));
-  }, []);
   const initialList = [
     {
       id: "a",
@@ -122,10 +114,6 @@ const GlobalContext = ({ children }) => {
       value={{
         user,
         setUser,
-        isConnected,
-        setIsConnected,
-        postPostIt,
-        postLogin,
         initialList,
         list,
         setList,
