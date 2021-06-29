@@ -11,6 +11,8 @@ import About from "./components/About"
 import Home from "./components/Home"
 import Users from "./components/Users"
 
+import './app.scss';
+
 class App extends Component {
     render() {
         return (
