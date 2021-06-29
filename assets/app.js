@@ -1,50 +1,37 @@
-import React, { Component } from 'react';
-import ReactDom from 'react-dom';
-import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-    Link
-} from "react-router-dom";
+/*!
 
-import About from "./components/About"
-import Home from "./components/Home"
-import Users from "./components/Users"
+=========================================================
+* Material Dashboard React - v1.10.0
+=========================================================
 
-class App extends Component {
-    render() {
-        return (
-            <Router>
-                <div>
-                    <nav>
-                        <ul>
-                            <li>
-                                <Link to="/">Home</Link>
-                            </li>
-                            <li>
-                                <Link to="/about">About</Link>
-                            </li>
-                            <li>
-                                <Link to="/users">Users</Link>
-                            </li>
-                        </ul>
-                    </nav>
+* Product Page: https://www.creative-tim.com/product/material-dashboard-react
+* Copyright 2021 Creative Tim (https://www.creative-tim.com)
+* Licensed under MIT (https://github.com/creativetimofficial/material-dashboard-react/blob/master/LICENSE.md)
 
-                    <Switch>
-                        <Route path="/about">
-                            <About />
-                        </Route>
-                        <Route path="/users">
-                            <Users />
-                        </Route>
-                        <Route path="/">
-                            <Home />
-                        </Route>
-                    </Switch>
-                </div>
-            </Router>
-        )
-    }
-}
+* Coded by Creative Tim
 
-ReactDom.render(<App />, document.getElementById('root'));
+=========================================================
+
+* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+*/
+import React from "react";
+import ReactDOM from "react-dom";
+import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
+
+// core components
+import Admin from "./layouts/Admin.js";
+import RTL from "./layouts/RTL.js";
+
+import "./app.scss";
+
+ReactDOM.render(
+  <BrowserRouter>
+    <Switch>
+      <Route path="/admin" component={Admin} />
+      <Route path="/rtl" component={RTL} />
+      <Redirect from="/" to="/admin/dashboard" />
+    </Switch>
+  </BrowserRouter>,
+  document.getElementById("root")
+);

@@ -1,3 +1,4 @@
+/db-data/*
 
 ###> symfony/framework-bundle ###
 /.env.local
