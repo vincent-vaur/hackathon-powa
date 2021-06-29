@@ -22,12 +22,19 @@ const LayoutBoard = () => {
             <a href='/api/logout'>Déconnexion</a>
           </>
         ) : (
-          <Login />
+          <></>
         )}
       </div>
       <div className='App'>
         <Navigation />
-        <Board list={list} />
+        {
+          user ? (
+            <Board list={list} />
+          ) : (
+            <></>
+          )
+        }
+        
       </div>
     </>
   );
