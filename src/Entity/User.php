@@ -48,7 +48,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private $lastname;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Project::class, mappedBy="user")
+     * @ORM\ManyToMany(targetEntity=Project::class, inversedBy="user")
+     * @ORM\JoinTable(name="project_user")
      */
     private $projects;
 

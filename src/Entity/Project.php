@@ -20,7 +20,7 @@ class Project
     private $id;
 
     /**
-     * @ORM\ManyToMany(targetEntity=User::class, inversedBy="projects")
+     * @ORM\ManyToMany(targetEntity=User::class, mappedBy="projects")
      */
     private $user;
 
@@ -47,26 +47,26 @@ class Project
     /**
      * @return Collection|User[]
      */
-    public function getUser(): Collection
-    {
-        return $this->user;
-    }
+    // public function getUser(): Collection
+    // {
+    //     return $this->user;
+    // }
 
-    public function addUser(User $user): self
-    {
-        if (!$this->user->contains($user)) {
-            $this->user[] = $user;
-        }
+    // public function addUser(User $user): self
+    // {
+    //     if (!$this->user->contains($user)) {
+    //         $this->user[] = $user;
+    //     }
 
-        return $this;
-    }
+    //     return $this;
+    // }
 
-    public function removeUser(User $user): self
-    {
-        $this->user->removeElement($user);
+    // public function removeUser(User $user): self
+    // {
+    //     $this->user->removeElement($user);
 
-        return $this;
-    }
+    //     return $this;
+    // }
 
     public function getName(): ?string
     {
