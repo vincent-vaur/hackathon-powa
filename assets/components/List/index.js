@@ -5,34 +5,9 @@ import PostVideo from '../PostVideo';
 import Link from '../Link';
 import PostImg from "../PostImg";
 
-const list = [
-  {
-    id: "a",
-    header: "Robin",
-    text: "I'll be always here for you Batman",
-    type: "PostIt",
-  },
-  {
-    id: "b",
-    // source: "https://www.youtube.com/1ZJTuep3w5g",
-    text: "You know nothing John Snow",
-    type: "video",
-  },
-  {
-    id: "c",
-    link: "https://react-bootstrap.github.io/",
-    text: "A great link for you to check ...",
-    type: "link",
-  },
-  {
-    id: "d",
-    img_source: "https://aws.vdkimg.com/film/6/9/9/3/6993_backdrop_scale_1280xauto.jpg",
-    text: "Come Surfing Buddy",
-    type: "image",
-  },
-];
 
-const List = () => {
+
+const List = ({list}) => {
   return (
     <Container fluid className='d-flex justify-content-around align-items-center flex-wrap mt-3'>
       {list.map((p) => {
