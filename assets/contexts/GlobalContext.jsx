@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import UserContext from "../contexts/UserContext";
-import { postPostIt } from "../api/api";
-import { postLogin } from "../api/api";
+
 
 const GlobalContext = ({ children }) => {
   const [user, setUser] = useState();

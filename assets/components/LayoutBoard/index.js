@@ -12,20 +12,20 @@ const LayoutBoard = () => {
   
   return (
     <>
-      <div className="logo">
-        <img src={logo} alt="logo" />
+      <div className='logo'>
+        <img src={logo} alt='logo' />
       </div>
-      <div className="Login">
+      <div className='Login d-flex align-items-end flex-column mr-3'>
         {user ? (
           <>
-            <p>{ user.email }</p>
-            <a href="/api/logout">Déconnexion</a>
+            <p>{user.email}</p>
+            <a href='/api/logout'>Déconnexion</a>
           </>
         ) : (
           <Login />
         )}
       </div>
-      <div className="App">
+      <div className='App'>
         <Navigation />
         <Board list={list} />
       </div>
