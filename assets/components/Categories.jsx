@@ -5,7 +5,7 @@ export default function Categories() {
   const [categories, setCategories] = useState();
   const [underCategory, setUnderCategory] = useState();
 
-  const fetchCategories = async () => {
+  const fetchCategories = () => {
     axios
       .get("/api/category")
       .then((r) => r.data)

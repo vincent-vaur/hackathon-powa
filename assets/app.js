@@ -12,6 +12,7 @@ import About from "./components/About"
 import Home from "./components/Home"
 import Users from "./components/Users"
 import Categories from './components/Categories';
+import Languages from './components/Languages';
 
 class App extends Component {
     render() {
@@ -30,7 +31,7 @@ class App extends Component {
                                 <Link to="/categories">categories</Link>
                             </li>
                             <li>
-                                <Link to="/users">Users</Link>
+                                <Link to="/languages">Languages</Link>
                             </li>
                         </ul>
                     </nav>
@@ -44,6 +45,9 @@ class App extends Component {
                         </Route>
                         <Route path="/categories">
                             <Categories />
+                        </Route>
+                        <Route path="/languages">
+                            <Languages />
                         </Route>
                         <Route path="/">
                             <Home />
