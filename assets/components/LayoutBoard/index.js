@@ -25,7 +25,6 @@ const LayoutBoard = () => {
           <Login />
         )}
       </div>
-      ;
       <div className="App">
         <Navigation />
         <Board list={list} />
