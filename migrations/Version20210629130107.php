@@ -10,11 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-<<<<<<< HEAD:migrations/Version20210629102301.php
-final class Version20210629102301 extends AbstractMigration
-=======
-final class Version20210629114947 extends AbstractMigration
->>>>>>> Delete type entity, repository and fixtures:migrations/Version20210629114947.php
+final class Version20210629130107 extends AbstractMigration
 {
     public function getDescription(): string
     {
