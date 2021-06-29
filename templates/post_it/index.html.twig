@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}PostIt index{% endblock %}
+
+{% block body %}
+    <h1>PostIt index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Post_it_text</th>
+                <th>Link</th>
+                <th>VideoPath</th>
+                <th>ImagePath</th>
+                <th>VoteUp</th>
+                <th>VoteDown</th>
+                <th>Position</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for post_it in post_its %}
+            <tr>
+                <td>{{ post_it.id }}</td>
+                <td>{{ post_it.postItText }}</td>
+                <td>{{ post_it.link }}</td>
+                <td>{{ post_it.videoPath }}</td>
+                <td>{{ post_it.imagePath }}</td>
+                <td>{{ post_it.voteUp }}</td>
+                <td>{{ post_it.voteDown }}</td>
+                <td>{{ post_it.position }}</td>
+                <td>
+                    <a href="{{ path('post_it_show', {'id': post_it.id}) }}">show</a>
+                    <a href="{{ path('post_it_edit', {'id': post_it.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="9">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('post_it_new') }}">Create new</a>
+{% endblock %}
