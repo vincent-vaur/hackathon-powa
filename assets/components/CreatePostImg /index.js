@@ -1,8 +1,10 @@
-import React from "react";
+import React, {useContext} from "react";
 import picture from '../../img/picture.svg';
+import UserContext from "../../contexts/UserContext"; 
 import { Form, Button, Modal, Nav } from "react-bootstrap";
 
 function MyCreatePictureForm(props) {
+  const {postTitle, postText, handleChangeTitle, handleChangeText, handleSubmitImage } = useContext(UserContext);
   return (
     <Modal
       {...props}
@@ -11,14 +13,16 @@ function MyCreatePictureForm(props) {
       centered
       className="p-3"
     >
-      <Form>
+      <Form onSubmit={handleSubmitImage}>
         <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
           <Form.Label>Picture source</Form.Label>
-          <Form.Control type="text" placeholder="" />
+          <Form.Control type="text" placeholder="" value={postTitle}
+            onChange={handleChangeTitle}/>
         </Form.Group>
         <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
           <Form.Label>Picture description:</Form.Label>
-          <Form.Control as="textarea" rows={3} />
+          <Form.Control as="textarea" rows={3} value={postText}
+            onChange={handleChangeText}/>
         </Form.Group>
         <Button variant="primary" type="submit" onClick={props.onHide}>
           Add One picture to the board !

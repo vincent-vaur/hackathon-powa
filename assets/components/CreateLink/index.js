@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
+import UserContext from "../../contexts/UserContext";
 import link from "../../img/link.svg";
 import { Form, Button, Modal, Nav } from "react-bootstrap";
 
 function MyCreateLinkForm(props) {
+  const {postTitle, postText, handleChangeTitle, handleChangeText, handleSubmitLink } = useContext(UserContext);
   return (
     <Modal
       {...props}
@@ -11,14 +13,16 @@ function MyCreateLinkForm(props) {
       centered
       className="p-3"
     >
-      <Form>
+      <Form onSubmit={handleSubmitLink}>
         <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
           <Form.Label>Link</Form.Label>
-          <Form.Control type="text" placeholder="add the url here" />
+          <Form.Control type="text" placeholder="add the url here" value={postTitle}
+            onChange={handleChangeTitle}/>
         </Form.Group>
         <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
           <Form.Label>Link text</Form.Label>
-          <Form.Control type="text" placeholder="add the link message here" />
+          <Form.Control type="text" placeholder="add the link message here"  value={postText}
+            onChange={handleChangeText}/>
         </Form.Group>
         <Button variant="primary" type="submit" onClick={props.onHide}>
           Add One link to the board !

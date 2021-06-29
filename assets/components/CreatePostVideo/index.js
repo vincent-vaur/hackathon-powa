@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
+import UserContext from "../../contexts/UserContext";
 import video from "../../img/video.svg";
 import { Form, Button, Modal, Nav } from "react-bootstrap";
 
 function MyCreateVideoForm(props) {
+  const {postTitle, postText, handleChangeTitle, handleChangeText, handleSubmitVideo } = useContext(UserContext);
   return (
     <Modal
       {...props}
@@ -11,14 +13,14 @@ function MyCreateVideoForm(props) {
       centered
       className="p-3"
     >
-      <Form>
+      <Form onSubmit={handleSubmitVideo}>
         <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
           <Form.Label>Video source</Form.Label>
-          <Form.Control type="text" placeholder="" />
+          <Form.Control type="text" placeholder="" value={postTitle} onChange={handleChangeTitle} />
         </Form.Group>
         <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
           <Form.Label>Video description:</Form.Label>
-          <Form.Control as="textarea" rows={3} />
+          <Form.Control as="textarea" rows={3} value={postText} onChange={handleChangeText} />
         </Form.Group>
         <Button variant="primary" type="submit" onClick={props.onHide}>
           Add one video to the board !

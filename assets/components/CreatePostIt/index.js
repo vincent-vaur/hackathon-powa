@@ -1,8 +1,10 @@
-import React from "react";
-import postit from '../../img/post-it.svg';
+import React, { useContext } from "react";
+import UserContext from "../../contexts/UserContext";
+import postit from "../../img/post-it.svg";
 import { Form, Button, Modal, Nav } from "react-bootstrap";
 
 function MyCreatePostItForm(props) {
+  const {postTitle, postText, handleChangeTitle, handleChangeText, handleSubmit } = useContext(UserContext);
   return (
     <Modal
       {...props}
@@ -11,16 +13,26 @@ function MyCreatePostItForm(props) {
       centered
       className="p-3"
     >
-      <Form>
+      <Form onSubmit={handleSubmit}>
         <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
           <Form.Label>Post it header: </Form.Label>
-          <Form.Control type="text" placeholder="Post it topic" />
+          <Form.Control
+            type="text"
+            placeholder="Post it topic"
+            value={postTitle}
+            onChange={handleChangeTitle}
+          />
         </Form.Group>
         <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
           <Form.Label>Message</Form.Label>
-          <Form.Control as="textarea" rows={3} />
+          <Form.Control
+            as="textarea"
+            rows={3}
+            value={postText}
+            onChange={handleChangeText}
+          />
         </Form.Group>
-        <Button variant="primary" type="submit" onClick={props.onHide}>
+        <Button variant="primary" type="submit">
           Add One postIt !
         </Button>
       </Form>
@@ -31,16 +43,19 @@ function MyCreatePostItForm(props) {
 export default function CreatePostIt() {
   const [modalShow, setModalShow] = React.useState(false);
 
+
   return (
     <>
       <Nav.Link className="mb-5">
-        <img className="w-100" src={postit} alt="postit" onClick={() => setModalShow(true)}/>
+        <img
+          className="w-100"
+          src={postit}
+          alt="postit"
+          onClick={() => setModalShow(true)}
+        />
       </Nav.Link>
 
-      <MyCreatePostItForm
-        show={modalShow}
-        onHide={() => setModalShow(false)}
-      />
+      <MyCreatePostItForm show={modalShow} onHide={() => setModalShow(false)} />
     </>
   );
 }
