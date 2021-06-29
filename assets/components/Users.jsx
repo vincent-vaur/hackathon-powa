@@ -24,7 +24,7 @@ export default Users => {
         <>
             <h1>Users</h1>
             {users.map(user => (
-                <p>{ user.firstname } { user.lastname }, { user.age }</p>
+                <p>{ user.firstname } { user.lastname }</p>
             ))}
         </>
     )
