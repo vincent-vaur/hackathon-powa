@@ -1,25 +1,29 @@
-import React,{ useContext } from 'react';
+import React, { useContext } from 'react';
+import { useHistory } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import UserContext from '../contexts/UserContext';
+import { postLogin } from '../api/api';
 
 const Login = () => {
-   const {
-     register,
-     handleSubmit,
-     formState: { errors },
-   } = useForm();
+  const history = useHistory();
+  const { setUser } = useContext(UserContext);
 
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
-   const { users, setusers, isConnected, postLogin } = useContext(UserContext);
-
-     const onSubmit = (values) => {
-       postLogin(values).then((newPostIt) => {
-         setusers([...users, newPostIt]);
-       });
-     };
+  const onSubmit = async (values) => {
+    try {
+      setUser(await postLogin(values));
+    } catch (err) {
+      alert('Identifiants incorrects')
+    }
+  };
 
   return (
     <div className='formulaire'>
@@ -30,9 +34,9 @@ const Login = () => {
             <Form.Control
               type='email'
               placeholder='Enter email'
-              {...register('email')}
+              {...register('username')}
             />
-            {errors.email && <p>{errors.user_email.message}</p>}
+            {errors.username && <p>{errors.username.message}</p>}
             <Form.Text className='text-muted'>
               We'll never share your email with anyone else.
             </Form.Text>
@@ -53,6 +57,6 @@ const Login = () => {
       </Card>
     </div>
   );
-}
+};
 
 export default Login;

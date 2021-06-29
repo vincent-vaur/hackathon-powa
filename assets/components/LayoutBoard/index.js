@@ -5,6 +5,7 @@ import Login from "../Login";
 import Board from "../Board";
 import Navigation from "../Navigation";
 import logo from "../../img/fiverr.png";
+import UserContext from "../../contexts/UserContext";
 
 
 const LayoutBoard = () => {
@@ -16,7 +17,14 @@ const LayoutBoard = () => {
         <img src={logo} alt="logo" />
       </div>
       <div className="Login">
-        <Login />
+        {user ? (
+          <>
+            <p>{ user.email }</p>
+            <a href="/api/logout">Déconnexion</a>
+          </>
+        ) : (
+          <Login />
+        )}
       </div>
       ;
       <div className="App">

@@ -4,8 +4,7 @@ import { postPostIt } from "../api/api";
 import { postLogin } from "../api/api";
 
 const GlobalContext = ({ children }) => {
-  const [users, setusers] = useState("");
-  const [isConnected, setIsConnected] = useState(false);
+  const [user, setUser] = useState();
 
   useEffect(() => {
     postPostIt().then((res) => setusers(res));
@@ -121,8 +120,8 @@ const GlobalContext = ({ children }) => {
   return (
     <UserContext.Provider
       value={{
-        users,
-        setusers,
+        user,
+        setUser,
         isConnected,
         setIsConnected,
         postPostIt,
