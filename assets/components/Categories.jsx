@@ -24,8 +24,7 @@ export default function Categories() {
           {categories[0] &&
             categories[0].map((e) => (
               <li>
-                {e}
-                <button onClick={() => setUnderCategory(e)}>set</button>
+                <button onClick={() => setUnderCategory(e)}>{e}</button>
               </li>
             ))}
         </ul>
