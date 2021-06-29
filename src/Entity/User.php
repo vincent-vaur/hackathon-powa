@@ -32,6 +32,11 @@ class User
      */
     private $age;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $job;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -76,5 +81,17 @@ class User
     public function __toString()
     {
         return $this->getFirstname() . ' ' . $this->getLastname();
+    }
+
+    public function getJob(): ?string
+    {
+        return $this->job;
+    }
+
+    public function setJob(string $job): self
+    {
+        $this->job = $job;
+
+        return $this;
     }
 }

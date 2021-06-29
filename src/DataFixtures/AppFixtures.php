@@ -15,16 +15,19 @@ class AppFixtures extends Fixture
                 'firstname' => 'Vincent',
                 'lastname' => 'Vaur',
                 'age' => 25,
+                'job' => 'Developer',
             ],
             [
                 'firstname' => 'Anthony',
                 'lastname' => 'Deplanque',
                 'age' => 24,
+                'job' => 'Developer',
             ],
             [
                 'firstname' => 'Chloé',
                 'lastname' => 'PrendreCher',
                 'age' => 26,
+                'job' => 'Developer',
             ]
         ];
 
@@ -33,7 +36,8 @@ class AppFixtures extends Fixture
             $user
                 ->setFirstname($userData['firstname'])
                 ->setLastname($userData['lastname'])
-                ->setAge($userData['age']);
+                ->setAge($userData['age'])
+                ->setJob($userData['job']);
 
                 $manager->persist($user);
         }
