@@ -30,9 +30,9 @@ const Login = () => {
             <Form.Control
               type='email'
               placeholder='Enter email'
-              {...register('user_email')}
+              {...register('email')}
             />
-            {errors.user_email && <p>{errors.user_email.message}</p>}
+            {errors.email && <p>{errors.user_email.message}</p>}
             <Form.Text className='text-muted'>
               We'll never share your email with anyone else.
             </Form.Text>
@@ -42,9 +42,9 @@ const Login = () => {
             <Form.Control
               type='password'
               placeholder='Password'
-              {...register('user_password')}
+              {...register('password')}
             />
-            {errors.user_password && <p>{errors.user_password.message}</p>}
+            {errors.password && <p>{errors.password.message}</p>}
           </Form.Group>
           <Button variant='primary' type='submit'>
             Submit

@@ -1,5 +1,5 @@
 import axios from 'axios';
-axios.defaults.baseURL = 'http://localhost:3306';
+axios.defaults.baseURL = 'http://127.0.0.1:8000';
 
 
 const postPostIt = async (values) => {
@@ -9,7 +9,7 @@ const postPostIt = async (values) => {
 
 const postLogin = async (values) => {
   console.log(values);
-  return await axios.post('/login', values).then((res) => res.data);
+  return await axios.post('/api/login', values).then((res) => res.data);
 };
 
 export { postPostIt, postLogin };
