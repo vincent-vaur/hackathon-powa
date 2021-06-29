@@ -2,22 +2,6 @@
 //     "primary": tomato,
 //     "danger": teal
 // );
-.App {
-  display: flex;
-  justify-content: center;
-  .logo img {
-    margin: 0.3rem 0 -4rem 0.8rem;
-  }
-  .dashboard {
-    width: 5rem;
-    margin-top: 15vh;
-    height: 70vh;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    background-color: rgb(195, 195, 150);
-    border-radius: 0 100px 100px 0;
-  }
-}
+
 
 @import "~bootstrap/scss/bootstrap";
