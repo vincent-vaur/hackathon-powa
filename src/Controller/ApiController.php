@@ -26,26 +26,17 @@ class ApiController extends AbstractController
     // }
 
     /**
-     * @Route("/mainCategory", name="main_category", methods={"GET"})
+     * @Route("/category", name="category", methods={"GET"})
      */
-    public function mainCategory(UserData $userData): Response
+    public function category(UserData $userData): Response
     {
         //Retourner les catégories principales et sous-catégories
         return $this->json([
             $userData->mainCategories, 
+            $userData->subCategories
         ]);
     }
 
-    /**
-     * @Route("/subCategory", name="sub_category", methods={"POST"})
-     */
-    public function subCategory(Request $request,UserData $userData): Response
-    {
-        
-        return $this->json([
-                $userData->subCategories[$request->get('mainCategory')]
-        ]);
-    }
     /**
      * @Route("/language", name="language", methods={"GET"})
      */
