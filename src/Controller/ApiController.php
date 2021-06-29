@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\User;
 use App\Repository\UserRepository;
 use App\Services\UserData;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -22,8 +23,9 @@ class ApiController extends AbstractController
     // {
     //     return $this->json($userRepository->findAll());
     // }
+
     /**
-     * @Route("/category", name="category")
+     * @Route("/category", name="category", methods={"GET"})
      */
     public function category(UserData $userData): Response
     {
@@ -31,6 +33,16 @@ class ApiController extends AbstractController
         return $this->json([
             $userData->mainCategories, 
             $userData->subCategories
+        ]);
+    }
+    /**
+     * @Route("/language", name="language", methods={"GET"})
+     */
+    public function language(UserData $userData): Response
+    {
+        //retourner les langues parlées par les freelancers
+        return $this->json([
+            $userData->language,
         ]);
     }
 }
