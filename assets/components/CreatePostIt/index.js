@@ -8,31 +8,31 @@ function MyCreatePostItForm(props) {
   return (
     <Modal
       {...props}
-      size="lg"
-      aria-labelledby="contained-modal-title-vcenter"
+      size='lg'
+      aria-labelledby='contained-modal-title-vcenter'
       centered
-      className="p-3"
+      className='p-3'
     >
       <Form onSubmit={handleSubmit}>
-        <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+        <Form.Group className='mb-3' controlId='exampleForm.ControlInput1'>
           <Form.Label>Post it header: </Form.Label>
           <Form.Control
-            type="text"
-            placeholder="Post it topic"
+            type='text'
+            placeholder='Post it topic'
             value={postTitle}
             onChange={handleChangeTitle}
           />
         </Form.Group>
-        <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+        <Form.Group className='mb-3' controlId='exampleForm.ControlTextarea1'>
           <Form.Label>Message</Form.Label>
           <Form.Control
-            as="textarea"
+            as='textarea'
             rows={3}
             value={postText}
             onChange={handleChangeText}
           />
         </Form.Group>
-        <Button variant="primary" type="submit">
+        <Button variant='primary' type='submit' onClick={props.onHide}>
           Add One postIt !
         </Button>
       </Form>
