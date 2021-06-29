@@ -23,6 +23,9 @@ class AppFixtures extends Fixture
             $users->setLastname($faker->lastName());
             $users->setAge($faker->numberBetween(18, 70));
             $users->setJob($faker->jobTitle());
+            $users->setStatus($faker->randomElement(['Disponible', 'Non disponible']));
+            $users->setTechnology($faker->randomElement(['Dev', 'Graphist', 'DevOps']));
+            $users->setRating($faker->numberBetween(1,5));
             $manager->persist($users);
         }
         $manager->flush();
