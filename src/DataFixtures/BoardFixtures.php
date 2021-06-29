@@ -21,10 +21,10 @@ class BoardFixtures extends Fixture implements DependentFixtureInterface
         {
             $boards[$i] = new Board;
             $boards[$i]->setName($fakerBoard->company());
-            $boards[$i]->setProject($this->getReference('project_' . $i));
+            $boards[$i]->addUser($this->getReference('customer_' . $i));
+            $boards[$i]->addUser($this->getReference('freelance_' . $i));
             $manager->persist($boards[$i]);
         }
-
 
         $manager->flush();
     }
@@ -32,7 +32,7 @@ class BoardFixtures extends Fixture implements DependentFixtureInterface
     public function getDependencies()
     {
         return [
-            ProjectFixtures::class,
+            UserFixtures::class,
         ];
     }
 }

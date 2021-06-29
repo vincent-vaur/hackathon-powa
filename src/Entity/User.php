@@ -48,14 +48,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private $lastname;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Project::class, mappedBy="user")
+     * @ORM\ManyToOne(targetEntity=Board::class, inversedBy="users")
      */
-    private $projects;
+    private $board;
 
-    public function __construct()
-    {
-        $this->projects = new ArrayCollection();
-    }
 
     public function getId(): ?int
     {
@@ -170,30 +166,16 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    /**
-     * @return Collection|Project[]
-     */
-    public function getProjects(): Collection
+    public function getBoard(): ?Board
     {
-        return $this->projects;
+        return $this->board;
     }
 
-    public function addProject(Project $project): self
+    public function setBoard(?Board $board): self
     {
-        if (!$this->projects->contains($project)) {
-            $this->projects[] = $project;
-            $project->addUser($this);
-        }
+        $this->board = $board;
 
         return $this;
     }
 
-    public function removeProject(Project $project): self
-    {
-        if ($this->projects->removeElement($project)) {
-            $project->removeUser($this);
-        }
-
-        return $this;
-    }
 }
