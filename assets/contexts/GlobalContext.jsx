@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import UserContext from "../contexts/UserContext";
-import { postPostIt } from "../api/api";
-import { postLogin } from "../api/api";
+
 
 const GlobalContext = ({ children }) => {
   const [user, setUser] = useState();
@@ -38,6 +37,11 @@ const GlobalContext = ({ children }) => {
   const handleChangeTitle = (event) => {
     setPostTitle(event.target.value);
   };
+
+  const handleRemove = (id)=>{
+    const newList = list.filter((item) => item.id !== id);
+    setList(newList);
+  }
   const handleChangeText = (event) => {
     setPostText(event.target.value);
   };
@@ -129,7 +133,8 @@ const GlobalContext = ({ children }) => {
         handleSubmit,
         handleSubmitImage,
         handleSubmitLink,
-        handleSubmitVideo
+        handleSubmitVideo,
+        handleRemove,
       }}
     >
       {children}
