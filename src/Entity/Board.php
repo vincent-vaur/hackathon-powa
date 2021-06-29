@@ -24,19 +24,21 @@ class Board
      */
     private $name;
 
-    /**
-     * @ORM\OneToOne(targetEntity=project::class, inversedBy="board", cascade={"persist", "remove"})
-     */
-    private $project;
 
     /**
      * @ORM\OneToMany(targetEntity=PostIt::class, mappedBy="board")
      */
     private $postIt;
 
+    /**
+     * @ORM\OneToMany(targetEntity=User::class, mappedBy="board")
+     */
+    private $users;
+
     public function __construct()
     {
         $this->postIt = new ArrayCollection();
+        $this->users = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -52,18 +54,6 @@ class Board
     public function setName(?string $name): self
     {
         $this->name = $name;
-
-        return $this;
-    }
-
-    public function getProject(): ?project
-    {
-        return $this->project;
-    }
-
-    public function setProject(?project $project): self
-    {
-        $this->project = $project;
 
         return $this;
     }
@@ -92,6 +82,36 @@ class Board
             // set the owning side to null (unless already changed)
             if ($postIt->getBoard() === $this) {
                 $postIt->setBoard(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|User[]
+     */
+    public function getUsers(): Collection
+    {
+        return $this->users;
+    }
+
+    public function addUser(User $user): self
+    {
+        if (!$this->users->contains($user)) {
+            $this->users[] = $user;
+            $user->setBoard($this);
+        }
+
+        return $this;
+    }
+
+    public function removeUser(User $user): self
+    {
+        if ($this->users->removeElement($user)) {
+            // set the owning side to null (unless already changed)
+            if ($user->getBoard() === $this) {
+                $user->setBoard(null);
             }
         }
 
