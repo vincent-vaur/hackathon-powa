@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import "../../app.css";
 import { Form, Button } from "react-bootstrap";
 import Login from "../Login";
 import Board from "../Board";
 import Navigation from "../Navigation";
 import logo from "../../img/fiverr.png";
+import UserContext from "../../contexts/UserContext";
 
 const LayoutBoard = () => {
   const initialList = [
@@ -34,6 +35,8 @@ const LayoutBoard = () => {
       type: "image",
     },
   ];
+
+  const { user } = useContext(UserContext);
   const [list, setList] = useState(initialList);
   const [postTitle, setPostTitle] = useState(" ");
   const [postText, setPostText] = useState(" ");
@@ -67,7 +70,14 @@ const LayoutBoard = () => {
         <img src={logo} alt="logo" />
       </div>
       <div className="Login">
-        <Login />
+        {user ? (
+          <>
+            <p>{ user.email }</p>
+            <a href="/api/logout">Déconnexion</a>
+          </>
+        ) : (
+          <Login />
+        )}
       </div>
       ;
       <div className="App">
