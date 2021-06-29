@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "../../app.css";
 import { Form, Button } from "react-bootstrap";
+import Login from "../Login";
 import Board from "../Board";
 import Navigation from "../Navigation";
 import logo from "../../img/fiverr.png";
@@ -43,26 +44,32 @@ const LayoutBoard = () => {
     setPostText(event.target.value);
   };
   const addArticle = () => {
-    setList([...list, {
-      id: "z",
-      header: postTitle,
-      text: postText,
-      type: "PostIt"
-    }]);
-  }
+    setList([
+      ...list,
+      {
+        id: "z",
+        header: postTitle,
+        text: postText,
+        type: "PostIt",
+      },
+    ]);
+  };
   const handleSubmit = (event) => {
     addArticle();
-    setPostTitle(' ');
-    setPostText(' ');
+    setPostTitle(" ");
+    setPostText(" ");
     event.preventDefault();
   };
-
 
   return (
     <>
       <div className="logo">
         <img src={logo} alt="logo" />
       </div>
+      <div className="Login">
+        <Login />
+      </div>
+      ;
       <div className="App">
         <Navigation />
         <Board list={list} />
@@ -78,7 +85,12 @@ const LayoutBoard = () => {
           </Form.Group>
           <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
             <Form.Label>Message</Form.Label>
-            <Form.Control as="textarea" rows={3} value={postText} onChange={handleChangeText} />
+            <Form.Control
+              as="textarea"
+              rows={3}
+              value={postText}
+              onChange={handleChangeText}
+            />
           </Form.Group>
           <Button variant="primary" type="submit">
             Add One postIt !

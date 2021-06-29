@@ -60,14 +60,14 @@ class PostIt
     private $board;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Type::class, inversedBy="postIts")
-     */
-    private $type;
-
-    /**
      * @ORM\OneToMany(targetEntity=Comment::class, mappedBy="postIt")
      */
     private $comment;
+
+    /**
+     * @ORM\Column(type="string", length=50, nullable=true)
+     */
+    private $type;
 
     public function __construct()
     {
@@ -175,18 +175,6 @@ class PostIt
         return $this;
     }
 
-    public function getType(): ?Type
-    {
-        return $this->type;
-    }
-
-    public function setType(?Type $type): self
-    {
-        $this->type = $type;
-
-        return $this;
-    }
-
     /**
      * @return Collection|Comment[]
      */
@@ -213,6 +201,18 @@ class PostIt
                 $comment->setPostIt(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getType(): ?string
+    {
+        return $this->type;
+    }
+
+    public function setType(?string $type): self
+    {
+        $this->type = $type;
 
         return $this;
     }

@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\User;
 use App\Repository\BoardRepository;
 use App\Repository\TypeRepository;
 use App\Repository\UserRepository;
@@ -21,10 +22,12 @@ class ApiController extends AbstractController
     /**
      * @Route("/user", name="user")
      */
-    public function index(UserRepository $userRepository, SerializerInterface $serializer): JsonResponse
+    public function index(BoardRepository $boardRepository, SerializerInterface $serializer): JsonResponse
     {
         // $data = $serializer->serialize($userRepository->findAll(), 'json');
         // var_dump($data); exit;
-        return new JsonResponse($serializer->serialize($userRepository->findAll(), 'json'), 200, [], true);
+        
+
+        return new JsonResponse($serializer->serialize($boardRepository->findOneById(1), 'json'), 200, [], true);
     }
 }
