@@ -22,22 +22,12 @@ class PostIt
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $post_it_text;
+    private $text;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $link;
-
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $videoPath;
-
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $imagePath;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
@@ -69,6 +59,11 @@ class PostIt
      */
     private $type;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $postItHeader;
+
     public function __construct()
     {
         $this->comment = new ArrayCollection();
@@ -79,14 +74,14 @@ class PostIt
         return $this->id;
     }
 
-    public function getPostItText(): ?string
+    public function getText(): ?string
     {
-        return $this->post_it_text;
+        return $this->text;
     }
 
-    public function setPostItText(?string $post_it_text): self
+    public function setText(?string $text): self
     {
-        $this->post_it_text = $post_it_text;
+        $this->text = $text;
 
         return $this;
     }
@@ -99,30 +94,6 @@ class PostIt
     public function setLink(?string $link): self
     {
         $this->link = $link;
-
-        return $this;
-    }
-
-    public function getVideoPath(): ?string
-    {
-        return $this->videoPath;
-    }
-
-    public function setVideoPath(?string $videoPath): self
-    {
-        $this->videoPath = $videoPath;
-
-        return $this;
-    }
-
-    public function getImagePath(): ?string
-    {
-        return $this->imagePath;
-    }
-
-    public function setImagePath(?string $imagePath): self
-    {
-        $this->imagePath = $imagePath;
 
         return $this;
     }
@@ -213,6 +184,18 @@ class PostIt
     public function setType(?string $type): self
     {
         $this->type = $type;
+
+        return $this;
+    }
+
+    public function getPostItHeader(): ?string
+    {
+        return $this->postItHeader;
+    }
+
+    public function setPostItHeader(?string $postItHeader): self
+    {
+        $this->postItHeader = $postItHeader;
 
         return $this;
     }
