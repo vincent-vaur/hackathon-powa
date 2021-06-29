@@ -20,6 +20,7 @@ const Login = () => {
   const onSubmit = async (values) => {
     try {
       setUser(await postLogin(values));
+      history.push('/board')
     } catch (err) {
       alert('Identifiants incorrects')
     }
