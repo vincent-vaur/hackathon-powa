@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 import ReactDom from "react-dom";
 import "./app.css";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -8,6 +8,14 @@ import logo from "./img/fiverr.png";
 
 class App extends Component {
   render() {
+  // const [list, setList] = useState(initialList);
+  // function handleChange() {
+  //   // track input field's state
+  // }
+ 
+  // function handleAdd() {
+  //   // add item
+  // }
     return (
       <>
         <div className="logo">

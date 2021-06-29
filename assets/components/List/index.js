@@ -30,6 +30,12 @@ const list = [
     text: "Come Surfing Buddy",
     type: "image",
   },
+  {
+    id: "b",
+    source: "https://www.youtube.com/1ZJTuep3w5g",
+    text: "You Bitch !!!",
+    type: "video",
+  }
 ];
 
 const List = () => {
