@@ -11,6 +11,7 @@ import UserContextProvider from './components/UserContextProvider';
 import About from "./components/About"
 import Home from "./components/Home"
 import Users from "./components/Users"
+import Categories from './components/Categories';
 
 class App extends Component {
     render() {
@@ -26,6 +27,9 @@ class App extends Component {
                                 <Link to="/about">About</Link>
                             </li>
                             <li>
+                                <Link to="/categories">categories</Link>
+                            </li>
+                            <li>
                                 <Link to="/users">Users</Link>
                             </li>
                         </ul>
@@ -37,6 +41,9 @@ class App extends Component {
                         </Route>
                         <Route path="/users">
                             <Users />
+                        </Route>
+                        <Route path="/categories">
+                            <Categories />
                         </Route>
                         <Route path="/">
                             <Home />
