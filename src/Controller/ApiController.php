@@ -23,8 +23,9 @@ class ApiController extends AbstractController
     // {
     //     return $this->json($userRepository->findAll());
     // }
+
     /**
-     * @Route("/category", name="category")
+     * @Route("/category", name="category", methods={"GET"})
      */
     public function category(UserData $userData): Response
     {
@@ -35,9 +36,9 @@ class ApiController extends AbstractController
         ]);
     }
     /**
-     * @Route("/language", name="language")
+     * @Route("/language", name="language", methods={"GET"})
      */
-    public function languages(UserData $userData): Response
+    public function language(UserData $userData): Response
     {
         //retourner les langues parlées par les freelancers
         return $this->json([
