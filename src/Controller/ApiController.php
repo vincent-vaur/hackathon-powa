@@ -26,7 +26,8 @@ class ApiController extends AbstractController
     {
         // $data = $serializer->serialize($userRepository->findAll(), 'json');
         // var_dump($data); exit;
+        // $this->getuser()->getBoard()
 
-        return new JsonResponse($serializer->serialize($boardRepository->findOneById($this->getuser()->getBoard()), 'json'), 200, [], true);
+        return new JsonResponse($serializer->serialize($boardRepository->findOneById(1), 'json'), 200, [], true);
     }
 }
