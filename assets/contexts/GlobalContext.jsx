@@ -38,6 +38,11 @@ const GlobalContext = ({ children }) => {
   const handleChangeTitle = (event) => {
     setPostTitle(event.target.value);
   };
+
+  const handleRemove = (id)=>{
+    const newList = list.filter((item) => item.id !== id);
+    setList(newList);
+  }
   const handleChangeText = (event) => {
     setPostText(event.target.value);
   };
@@ -129,7 +134,8 @@ const GlobalContext = ({ children }) => {
         handleSubmit,
         handleSubmitImage,
         handleSubmitLink,
-        handleSubmitVideo
+        handleSubmitVideo,
+        handleRemove,
       }}
     >
       {children}
